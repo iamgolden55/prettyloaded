@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, Trash2, Plus, Minus, ShoppingBag, Sparkles, ArrowRight, ShieldCheck, Truck, RotateCcw } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { CartItem, CharmOption } from '../../data/caseCustomizerData';
 
 interface CartDrawerProps {
@@ -23,8 +22,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const [promoCode, setPromoCode] = useState('');
   const [promoDiscount, setPromoDiscount] = useState<number>(0);
   const [promoMessage, setPromoMessage] = useState<string | null>(null);
-  const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [orderComplete, setOrderComplete] = useState(false);
 
   const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
   const discountAmount = subtotal * promoDiscount;
@@ -47,23 +44,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   };
 
   const handleCheckout = () => {
-    setIsCheckingOut(true);
-    setTimeout(() => {
-      setIsCheckingOut(false);
-      setOrderComplete(true);
-      confetti({
-        particleCount: 120,
-        spread: 90,
-        origin: { y: 0.6 },
-        colors: ['#FF4DB8', '#FFCFE6', '#C0C0C0', '#FFE600', '#FF1493'],
-      });
-    }, 1200);
-  };
-
-  const handleResetOrder = () => {
-    setOrderComplete(false);
-    onClearCart();
-    onClose();
+    setPromoMessage('Secure checkout is not connected yet. No payment has been taken.');
   };
 
   if (!isOpen) return null;
@@ -123,28 +104,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             )}
           </div>
 
-          {/* Order Success State */}
-          {orderComplete ? (
-            <div className="flex-1 p-8 flex flex-col items-center justify-center text-center space-y-4">
-              <div className="w-20 h-20 rounded-full bg-pink-500/10 border-2 border-pink-500 flex items-center justify-center text-pink-600 shadow-inner">
-                <Sparkles className="w-10 h-10 animate-pulse" />
-              </div>
-              <h4 className="font-outfit text-2xl font-bold text-zinc-900">Custom Order Placed!</h4>
-              <p className="text-sm text-zinc-600 font-jakarta max-w-xs">
-                Your bespoke Pretty Loaded case is heading to our glitter artisan studio. We’ll email tracking when hand-poured!
-              </p>
-              <div className="w-full bg-pink-50 rounded-2xl p-4 border border-pink-200 text-left text-xs space-y-1 font-mono">
-                <div className="text-zinc-400">Order #PL-{Math.floor(100000 + Math.random() * 900000)}</div>
-                <div className="text-zinc-600 font-medium">Estimated Arrival: 3-5 business days</div>
-              </div>
-              <button
-                onClick={handleResetOrder}
-                className="w-full py-3.5 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-outfit font-bold shadow-lg shadow-pink-500/25 transition-all"
-              >
-                Create Another Case ✨
-              </button>
-            </div>
-          ) : (
+          {/* Cart contents remain available until real payment processing is integrated. */}
+          {(
             <>
               {/* Items List */}
               <div className="flex-1 overflow-y-auto p-5 space-y-4">
@@ -300,24 +261,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     </div>
                   </div>
 
-                  {/* Checkout Button */}
+                  {/* Checkout remains disabled until a real payment provider is connected. */}
                   <button
-                    onClick={handleCheckout}
-                    disabled={isCheckingOut}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white font-outfit font-bold text-sm tracking-wide shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:brightness-105 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                    type="button"
+                    disabled
+                    aria-describedby="checkout-unavailable"
+                    className="w-full py-3.5 rounded-xl bg-zinc-300 text-zinc-600 font-outfit font-bold text-sm tracking-wide cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    {isCheckingOut ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Processing Order...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Secure Checkout</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </>
-                    )}
+                    Checkout coming soon
+                    <ArrowRight className="w-4 h-4" />
                   </button>
+                  <p id="checkout-unavailable" className="text-[11px] text-zinc-500 text-center">
+                    Your bag is a preview. No orders or payments can be placed yet.
+                  </p>
 
                   {/* Trust badges */}
                   <div className="grid grid-cols-3 gap-2 pt-2 text-[10px] text-zinc-500 text-center">
