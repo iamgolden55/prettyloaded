@@ -1,19 +1,7 @@
-import React, { useState } from 'react';
-import { Heart, Sparkles, Send, Check } from 'lucide-react';
+import React from 'react';
+import { Heart, Sparkles } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setTimeout(() => setSubscribed(false), 4000);
-      setEmail('');
-    }
-  };
-
   return (
     <footer id="brand-footer" className="bg-zinc-950 text-white pt-16 pb-12 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -66,38 +54,14 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* VIP Drop Newsletter */}
+          {/* Newsletter signup will be enabled after connecting a mailing-list provider. */}
           <div className="space-y-3">
             <h4 className="font-outfit font-bold text-sm uppercase tracking-wider text-pink-400">
               VIP Drop Club
             </h4>
             <p className="text-xs text-zinc-400 font-jakarta">
-              Get secret drop alerts for small-batch glitter pours, limited charm charms, and 15% off your first build.
+              Follow Pretty Loaded for new drops and product announcements. Email sign-up will be available here once our mailing list is connected.
             </p>
-            
-            <form onSubmit={handleSubscribe} className="space-y-2">
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-xl bg-zinc-900 border border-zinc-800 text-white placeholder-zinc-500 focus:outline-none focus:border-pink-500 transition-colors"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-3 py-2 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-bold text-xs transition-colors flex items-center justify-center shrink-0"
-                >
-                  {subscribed ? <Check className="w-4 h-4" /> : <Send className="w-4 h-4" />}
-                </button>
-              </div>
-              {subscribed && (
-                <div className="text-[11px] text-pink-400 font-medium">
-                  ✨ Welcome to the Loaded Club! Check your inbox.
-                </div>
-              )}
-            </form>
           </div>
 
         </div>
