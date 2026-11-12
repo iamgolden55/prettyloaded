@@ -79,6 +79,38 @@ function createHeartShape(size: number): THREE.Shape {
   return shape;
 }
 
+// Dispose GPU resources recursively, including nested meshes inside charm groups.
+function disposeObject3DResources(root: THREE.Object3D): void {
+  const geometries = new Set<THREE.BufferGeometry>();
+  const materials = new Set<THREE.Material>();
+  const textures = new Set<THREE.Texture>();
+
+  root.traverse((object) => {
+    if (
+      object instanceof THREE.Mesh ||
+      object instanceof THREE.Points ||
+      object instanceof THREE.Line
+    ) {
+      geometries.add(object.geometry);
+
+      const objectMaterials = Array.isArray(object.material)
+        ? object.material
+        : [object.material];
+
+      objectMaterials.forEach((material) => {
+        materials.add(material);
+        Object.values(material).forEach((value) => {
+          if (value instanceof THREE.Texture) textures.add(value);
+        });
+      });
+    }
+  });
+
+  textures.forEach((texture) => texture.dispose());
+  geometries.forEach((geometry) => geometry.dispose());
+  materials.forEach((material) => material.dispose());
+}
+
 export const ThreePhoneCanvas = forwardRef<ThreePhoneCanvasRef, ThreePhoneCanvasProps>(
   ({ config, className = '' }, ref) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -238,11 +270,18 @@ export const ThreePhoneCanvas = forwardRef<ThreePhoneCanvasRef, ThreePhoneCanvas
         if (!containerRef.current || !rendererRef.current || !cameraRef.current) return;
         const w = containerRef.current.clientWidth;
         const h = containerRef.current.clientHeight;
+        if (w <= 0 || h <= 0) return;
         cameraRef.current.aspect = w / h;
         cameraRef.current.updateProjectionMatrix();
         rendererRef.current.setSize(w, h);
       };
-      window.addEventListener('resize', handleResize);
+      // Observe the canvas container itself so grid, sidebar and responsive layout
+      // changes resize the renderer even when the browser window does not change.
+      const resizeObserver = typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(handleResize)
+        : null;
+      if (resizeObserver) resizeObserver.observe(container);
+      else window.addEventListener('resize', handleResize);
 
       // 10. Animation Loop
       let animationFrameId: number;
@@ -270,14 +309,19 @@ export const ThreePhoneCanvas = forwardRef<ThreePhoneCanvasRef, ThreePhoneCanvas
           // Subtle shimmer wave
           const time = elapsedTime * 3.0;
           const colors = glitterParticlesRef.current.geometry.attributes.color;
-          if (colors) {
+          const baseColors = glitterParticlesRef.current.userData.baseColors as Float32Array | undefined;
+          if (colors && baseColors) {
             for (let i = 0; i < count; i++) {
               const sparkle = (Math.sin(time + i * 0.3) + 1.0) * 0.5;
-              const r = colors.getX(i);
-              const g = colors.getY(i);
-              const b = colors.getZ(i);
-              // Twinkle effect by modulating brightness
-              colors.setXYZ(i, Math.min(1.0, r * (0.8 + sparkle * 0.4)), Math.min(1.0, g * (0.8 + sparkle * 0.4)), Math.min(1.0, b * (0.8 + sparkle * 0.4)));
+              const brightness = 0.8 + sparkle * 0.4;
+              const offset = i * 3;
+              // Always derive shimmer from immutable source colours to avoid frame-by-frame drift.
+              colors.setXYZ(
+                i,
+                Math.min(1.0, baseColors[offset] * brightness),
+                Math.min(1.0, baseColors[offset + 1] * brightness),
+                Math.min(1.0, baseColors[offset + 2] * brightness),
+              );
             }
             colors.needsUpdate = true;
           }
@@ -298,8 +342,11 @@ export const ThreePhoneCanvas = forwardRef<ThreePhoneCanvasRef, ThreePhoneCanvas
 
       return () => {
         cancelAnimationFrame(animationFrameId);
-        window.removeEventListener('resize', handleResize);
+        if (resizeObserver) resizeObserver.disconnect();
+        else window.removeEventListener('resize', handleResize);
         controls.dispose();
+        if (scene.environment) scene.environment.dispose();
+        disposeObject3DResources(scene);
         renderer.dispose();
         if (container.contains(renderer.domElement)) {
           container.removeChild(renderer.domElement);
@@ -313,16 +360,9 @@ export const ThreePhoneCanvas = forwardRef<ThreePhoneCanvasRef, ThreePhoneCanvas
       const phoneGroup = phoneGroupRef.current;
       if (!scene || !phoneGroup) return;
 
-      // Clear existing phone components
-      while (phoneGroup.children.length > 0) {
-        const child = phoneGroup.children[0];
-        phoneGroup.remove(child);
-        if (child instanceof THREE.Mesh) {
-          child.geometry.dispose();
-          if (Array.isArray(child.material)) child.material.forEach((m) => m.dispose());
-          else child.material.dispose();
-        }
-      }
+      // Dispose all nested geometries, materials and textures before rebuilding.
+      disposeObject3DResources(phoneGroup);
+      phoneGroup.clear();
 
       // Find current configurations
       const model = PHONE_MODELS.find((m) => m.id === config.phoneModelId) || PHONE_MODELS[0];
@@ -641,6 +681,7 @@ export const ThreePhoneCanvas = forwardRef<ThreePhoneCanvasRef, ThreePhoneCanvas
       });
 
       const glitterPoints = new THREE.Points(glitterGeo, glitterMat);
+      glitterPoints.userData.baseColors = colors.slice(0, validParticles * 3);
       phoneGroup.add(glitterPoints);
       glitterParticlesRef.current = glitterPoints;
 
