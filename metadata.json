@@ -1,0 +1,6 @@
+{
+  "name": "Pretty Loaded - 3D Custom Glitter Phone Cases",
+  "description": "Design and preview custom glitter and Y2K charm phone cases in real-time interactive 3D for iPhone, Samsung Galaxy, and Google Pixel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

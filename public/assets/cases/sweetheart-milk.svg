@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <!-- Pearl Opal Shading -->
+    <linearGradient id="sm-body-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="35%" stop-color="#FFF0F5" />
+      <stop offset="65%" stop-color="#FCE7F3" />
+      <stop offset="85%" stop-color="#F3E8FF" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+
+    <linearGradient id="sm-bevel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#FBCFE8" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#E9D5FF" stop-opacity="0.7" />
+    </linearGradient>
+
+    <linearGradient id="pastel-pink-bow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#F472B6" />
+      <stop offset="100%" stop-color="#DB2777" />
+    </linearGradient>
+
+    <filter id="sm-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#F472B6" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+
+    <filter id="charm-shadow-sm" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#DB2777" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Ground reflection shadow -->
+  <ellipse cx="150" cy="280" rx="65" ry="10" fill="#000000" opacity="0.12" filter="blur(6px)" />
+
+  <!-- Phone Case Group (Google Pixel Camera Bar Style) -->
+  <g transform="translate(150, 142) rotate(-2) translate(-150, -142)" filter="url(#sm-shadow)">
+    
+    <!-- Case Base -->
+    <rect x="85" y="24" width="130" height="236" rx="28" fill="url(#sm-body-grad)" stroke="url(#sm-bevel)" stroke-width="3.5" />
+
+    <!-- Inner bumper lip -->
+    <rect x="88" y="27" width="124" height="230" rx="25" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.8" />
+
+    <!-- Google Pixel Camera Visor Bar -->
+    <g transform="translate(85, 42)">
+      <rect x="0" y="0" width="130" height="28" rx="8" fill="#FCE7F3" stroke="#F472B6" stroke-width="1.5" />
+      <!-- Dual pill cutout for cameras -->
+      <rect x="18" y="5" width="42" height="18" rx="9" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.5" />
+      <circle cx="28" cy="14" r="6" fill="#3B82F6" opacity="0.9" />
+      <circle cx="26" cy="12" r="2" fill="#FFFFFF" />
+      <circle cx="48" cy="14" r="6" fill="#3B82F6" opacity="0.9" />
+      <circle cx="46" cy="12" r="2" fill="#FFFFFF" />
+      <!-- Single periscope lens & flash -->
+      <circle cx="74" cy="14" r="6" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.5" />
+      <circle cx="106" cy="14" r="4.5" fill="#FEF08A" stroke="#FFFFFF" stroke-width="1" />
+    </g>
+
+    <!-- Baby Pink Heart Confetti & Stardust Layer -->
+    <g opacity="0.9">
+      <!-- Heart 1 -->
+      <g transform="translate(115, 105) scale(0.7) rotate(-15)">
+        <path d="M0,0 C-4,-8 -12,-8 -12,0 C-12,8 0,16 0,16 C0,16 12,8 12,0 C12,-8 4,-8 0,0 Z" fill="#F472B6" />
+      </g>
+      <!-- Heart 2 -->
+      <g transform="translate(180, 120) scale(0.65) rotate(20)">
+        <path d="M0,0 C-4,-8 -12,-8 -12,0 C-12,8 0,16 0,16 C0,16 12,8 12,0 C12,-8 4,-8 0,0 Z" fill="#FF80BF" />
+      </g>
+      <!-- Heart 3 -->
+      <g transform="translate(125, 175) scale(0.8) rotate(10)">
+        <path d="M0,0 C-4,-8 -12,-8 -12,0 C-12,8 0,16 0,16 C0,16 12,8 12,0 C12,-8 4,-8 0,0 Z" fill="#F472B6" />
+      </g>
+      <!-- Heart 4 -->
+      <g transform="translate(175, 195) scale(0.6) rotate(-25)">
+        <path d="M0,0 C-4,-8 -12,-8 -12,0 C-12,8 0,16 0,16 C0,16 12,8 12,0 C12,-8 4,-8 0,0 Z" fill="#FDA4AF" />
+      </g>
+      <!-- Heart 5 -->
+      <g transform="translate(150, 230) scale(0.75) rotate(5)">
+        <path d="M0,0 C-4,-8 -12,-8 -12,0 C-12,8 0,16 0,16 C0,16 12,8 12,0 C12,-8 4,-8 0,0 Z" fill="#FF80BF" />
+      </g>
+
+      <!-- Sparkle cross points -->
+      <g transform="translate(165, 90) scale(0.65)">
+        <path d="M0,15 Q15,15 15,0 Q15,15 30,15 Q15,15 15,30 Q15,15 0,15" fill="#F472B6" />
+      </g>
+      <g transform="translate(110, 140) scale(0.7)">
+        <path d="M0,15 Q15,15 15,0 Q15,15 30,15 Q15,15 15,30 Q15,15 0,15" fill="#FFFFFF" />
+      </g>
+      <g transform="translate(185, 160) scale(0.75)">
+        <path d="M0,15 Q15,15 15,0 Q15,15 30,15 Q15,15 15,30 Q15,15 0,15" fill="#FFFFFF" />
+      </g>
+      <g transform="translate(135, 210) scale(0.6)">
+        <path d="M0,15 Q15,15 15,0 Q15,15 30,15 Q15,15 15,30 Q15,15 0,15" fill="#F472B6" />
+      </g>
+
+      <!-- Opal Pearl Beads -->
+      <circle cx="160" cy="115" r="2.5" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="0.8" />
+      <circle cx="140" cy="135" r="2.5" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="0.8" />
+      <circle cx="165" cy="180" r="2.5" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="0.8" />
+      <circle cx="120" cy="225" r="2.2" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="0.8" />
+      <circle cx="178" cy="225" r="2.2" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="0.8" />
+    </g>
+
+    <!-- Sweetheart Satin Bow Charm (Center Upper) -->
+    <g transform="translate(150, 145)" filter="url(#charm-shadow-sm)">
+      <!-- Left loop -->
+      <path d="M0,0 C-18,-24 -36,-12 -28,8 C-24,18 -8,6 0,0 Z" fill="url(#pastel-pink-bow)" stroke="#FFFFFF" stroke-width="1.2" />
+      <!-- Right loop -->
+      <path d="M0,0 C18,-24 36,-12 28,8 C24,18 8,6 0,0 Z" fill="url(#pastel-pink-bow)" stroke="#FFFFFF" stroke-width="1.2" />
+      <!-- Ribbons tail -->
+      <path d="M-4,4 C-12,18 -18,28 -14,32 C-10,32 -2,14 0,6 Z" fill="url(#pastel-pink-bow)" stroke="#FFFFFF" stroke-width="0.8" />
+      <path d="M4,4 C12,18 18,28 14,32 C10,32 2,14 0,6 Z" fill="url(#pastel-pink-bow)" stroke="#FFFFFF" stroke-width="0.8" />
+      <!-- Center Knot Pearl -->
+      <circle cx="0" cy="0" r="7.5" fill="#FFFFFF" stroke="#F472B6" stroke-width="1.5" />
+      <circle cx="-2" cy="-2" r="2.5" fill="#FFFFFF" opacity="0.9" />
+    </g>
+
+    <!-- Pearl Opal High-Gloss Sheen Sweep -->
+    <path d="M88,27 L170,27 L115,257 L88,257 Z" fill="#FFFFFF" opacity="0.4" pointer-events="none" />
+  </g>
+</svg>

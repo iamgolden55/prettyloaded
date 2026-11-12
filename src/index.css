@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-outfit: 'Outfit', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: #FFF2F8;
+    color: #1F1F1F;
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: var(--font-outfit);
+}
+
+/* Custom scrollbars for customizer control panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 207, 230, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 184, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 77, 184, 0.7);
+}
+
+/* Chrome metallic shine animation */
+@keyframes chrome-shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.chrome-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 25%, #94A3B8 50%, #F8FAFC 75%, #CBD5E1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.pink-chrome-text {
+  background: linear-gradient(135deg, #FFF0F7 0%, #FF4DB8 35%, #FFFFFF 50%, #FF80CC 75%, #D91A8D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(255, 77, 184, 0.3));
+}
