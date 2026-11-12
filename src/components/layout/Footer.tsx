@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-zinc-400 font-jakarta leading-relaxed">
-              The premier bespoke Y2K custom phone case studio. Infusing high-impact shock protection with hand-poured glitters, chrome charms, and signature foil monograms.
+              A playful Y2K phone-case studio combining glitter-inspired finishes, chrome accents, decorative charms and personalised monograms.
             </p>
             <div className="flex items-center gap-2 text-xs text-pink-400 font-mono">
               <Sparkles className="w-3.5 h-3.5" />
