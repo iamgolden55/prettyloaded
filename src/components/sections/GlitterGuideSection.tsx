@@ -27,7 +27,7 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
             Hand-Poured <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-500 to-pink-500">Glitter Formulations</span>
           </h2>
           <p className="text-sm sm:text-base text-zinc-600 font-jakarta mt-3">
-            Unlike cheap printed sticker cases, every Pretty Loaded case contains genuine suspended holographic foils, micro-cut diamond dust, and iridescent stars sealed in optical-grade anti-yellowing resin.
+            Explore the finishes, colours and decorative effects available for your custom case.
           </p>
         </div>
 
@@ -123,16 +123,16 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
           
           <div className="max-w-2xl mb-10">
             <span className="text-pink-400 font-mono text-xs uppercase tracking-widest font-bold">
-              Engineering × Aesthetics
+              Materials × Aesthetics
             </span>
             <h3 className="font-outfit font-black text-2xl sm:text-4xl tracking-tight mt-1">
               Pretty on the Outside. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-pink-200">
-                Bulletproof Armor Underneath.
+                A Little Extra Everything.
               </span>
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 font-jakarta mt-2">
-              We engineer each case to protect flagship smartphones with military-spec shock absorption while delivering high-gloss Y2K mirror finishes that never peel or discolor.
+              Discover the design details and materials planned for the Pretty Loaded collection.
             </p>
           </div>
 
@@ -141,9 +141,9 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
               <div className="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-400/30 flex items-center justify-center text-pink-300">
                 <Shield className="w-5 h-5" />
               </div>
-              <h4 className="font-outfit font-bold text-base text-white">10-Foot Drop Certified</h4>
+              <h4 className="font-outfit font-bold text-base text-white">Protective Case Design</h4>
               <p className="text-xs text-zinc-400 font-jakarta leading-relaxed">
-                Dual-layer TPU inner cushion and raised 1.8mm camera bezel keep your lenses safe from drops.
+                Case construction and protection specifications will be published once product testing is complete.
               </p>
             </div>
 
@@ -151,9 +151,9 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
               <div className="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-400/30 flex items-center justify-center text-pink-300">
                 <Droplets className="w-5 h-5" />
               </div>
-              <h4 className="font-outfit font-bold text-base text-white">Zero-Yellowing Resin</h4>
+              <h4 className="font-outfit font-bold text-base text-white">Clear Finish Options</h4>
               <p className="text-xs text-zinc-400 font-jakarta leading-relaxed">
-                UV-resistant aliphatic polymers guarantee crystal clarity for over 36 months under direct sun.
+                Explore clear and tinted finishes. Material performance details will be added after supplier verification.
               </p>
             </div>
 
@@ -161,9 +161,9 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
               <div className="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-400/30 flex items-center justify-center text-pink-300">
                 <Gem className="w-5 h-5" />
               </div>
-              <h4 className="font-outfit font-bold text-base text-white">Hand-Poured Charms</h4>
+              <h4 className="font-outfit font-bold text-base text-white">Statement Accessories</h4>
               <p className="text-xs text-zinc-400 font-jakarta leading-relaxed">
-                Chrome electroplated metallic stars, ruby-cut crystals, and lockets locked beneath structural clearcoat.
+                Add decorative charms, metallic accents and personal details to your design.
               </p>
             </div>
 
@@ -171,9 +171,9 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
               <div className="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-400/30 flex items-center justify-center text-pink-300">
                 <Zap className="w-5 h-5" />
               </div>
-              <h4 className="font-outfit font-bold text-base text-white">MagSafe Compatible</h4>
+              <h4 className="font-outfit font-bold text-base text-white">Device Compatibility</h4>
               <p className="text-xs text-zinc-400 font-jakarta leading-relaxed">
-                Ultra-slim N52 neodymium magnetic ring built directly into the core for rapid 15W wireless charging.
+                Compatibility and wireless-charging specifications will be confirmed for each physical case model.
               </p>
             </div>
           </div>

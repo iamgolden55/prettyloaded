@@ -121,10 +121,6 @@ export default function App() {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const handleClearCart = () => {
-    setCartItems([]);
-  };
-
   const handleSelectPresetConfig = (presetConfig: CustomCaseConfig) => {
     setConfig({ ...presetConfig });
     confetti({
@@ -289,7 +285,6 @@ export default function App() {
         items={cartItems}
         onUpdateQuantity={handleUpdateQuantity}
         onRemoveItem={handleRemoveItem}
-        onClearCart={handleClearCart}
       />
 
       {/* Snapshot HD Preview & Download Modal */}
