@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Trash2, Plus, Minus, ShoppingBag, Sparkles, ArrowRight, ShieldCheck, Truck, RotateCcw } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, Sparkles, ArrowRight } from 'lucide-react';
 import { CartItem, CharmOption } from '../../data/caseCustomizerData';
 
 interface CartDrawerProps {
@@ -8,7 +8,6 @@ interface CartDrawerProps {
   items: CartItem[];
   onUpdateQuantity: (id: string, delta: number) => void;
   onRemoveItem: (id: string) => void;
-  onClearCart: () => void;
 }
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({
@@ -17,7 +16,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   items,
   onUpdateQuantity,
   onRemoveItem,
-  onClearCart,
 }) => {
   const [promoCode, setPromoCode] = useState('');
   const [promoDiscount, setPromoDiscount] = useState<number>(0);
@@ -270,21 +268,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     Your bag is a preview. No orders or payments can be placed yet.
                   </p>
 
-                  {/* Trust badges */}
-                  <div className="grid grid-cols-3 gap-2 pt-2 text-[10px] text-zinc-500 text-center">
-                    <div className="flex flex-col items-center gap-0.5">
-                      <Truck className="w-3.5 h-3.5 text-zinc-400" />
-                      <span>Fast Shipping</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-0.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
-                      <span>Drop Tested</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-0.5">
-                      <RotateCcw className="w-3.5 h-3.5 text-zinc-400" />
-                      <span>30-Day Love It</span>
-                    </div>
-                  </div>
+                  <p className="text-[11px] text-zinc-500 text-center">
+                    Shipping, returns and product specifications will be confirmed before checkout is enabled.
+                  </p>
                 </div>
               )}
           </>
