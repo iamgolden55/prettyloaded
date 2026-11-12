@@ -128,7 +128,7 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
             <h3 className="font-outfit font-black text-2xl sm:text-4xl tracking-tight mt-1">
               Pretty on the Outside. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-pink-200">
-                Bulletproof Armor Underneath.
+                A Little Extra Everything.
               </span>
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 font-jakarta mt-2">
@@ -161,7 +161,7 @@ export const GlitterGuideSection: React.FC<GlitterGuideSectionProps> = ({
               <div className="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-400/30 flex items-center justify-center text-pink-300">
                 <Gem className="w-5 h-5" />
               </div>
-              <h4 className="font-outfit font-bold text-base text-white">Hand-Poured Charms</h4>
+              <h4 className="font-outfit font-bold text-base text-white">Statement Accessories</h4>
               <p className="text-xs text-zinc-400 font-jakarta leading-relaxed">
                 Add decorative charms, metallic accents and personal details to your design.
               </p>
