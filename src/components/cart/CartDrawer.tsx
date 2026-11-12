@@ -43,10 +43,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     }
   };
 
-  const handleCheckout = () => {
-    setPromoMessage('Secure checkout is not connected yet. No payment has been taken.');
-  };
-
   if (!isOpen) return null;
 
   return (
@@ -105,8 +101,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           </div>
 
           {/* Cart contents remain available until real payment processing is integrated. */}
-          {(
-            <>
+          <>
               {/* Items List */}
               <div className="flex-1 overflow-y-auto p-5 space-y-4">
                 {items.length === 0 ? (
@@ -292,8 +287,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </div>
                 </div>
               )}
-            </>
-          )}
+          </>
 
         </div>
       </div>
