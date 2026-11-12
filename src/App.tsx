@@ -289,7 +289,6 @@ export default function App() {
         items={cartItems}
         onUpdateQuantity={handleUpdateQuantity}
         onRemoveItem={handleRemoveItem}
-        onClearCart={handleClearCart}
       />
 
       {/* Snapshot HD Preview & Download Modal */}
